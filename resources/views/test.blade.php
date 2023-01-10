@@ -5,33 +5,38 @@
 
 
 <div class ="container mt-3">
-<fieldset id="No.1"></fieldset>
-<h5>Which of the following is not a feature of Laravel?</h5>
+
+@foreach($questions as $question)
+
+<fieldset class="mt-3" id="No.1">
+<h5>{{ $question->question}}</h5>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
-  Blade templating engine
+{{$question->answer1}}
   </label>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
-  Artisan command-line interface
+  {{$question->answer2}}
   </label>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
   <label class="form-check-label" for="flexRadioDefault1">
-  Eloquent ORM
+  {{$question->answer3}}
   </label>
 </div>
 <div class="form-check">
   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
   <label class="form-check-label" for="flexRadioDefault2">
-  JavaScript library
+  {{$question->answer4}}
   </label>
 </div>
 </div>
 </fieldset>
+@endforeach
+</div>
 
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,12 +18,17 @@ Route::get('/', function () {
     return view('index');
 })->name('main');
 
+Route::get('/test', [TestsController::class, "getTestQuestions"])->name('getTestQuestion');
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        //get data from database
+        $data = "this is data";
+        return view('dashboard',['data'=>$data]);
     })->name('dashboard');
 });
