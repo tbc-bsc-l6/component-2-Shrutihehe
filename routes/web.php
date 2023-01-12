@@ -20,6 +20,8 @@ Route::get('/', function () {
 
 Route::get('/test', [TestsController::class, "getTestQuestions"])->name('getTestQuestion');
 
+Route::post('/submitExam', [TestsController::class, "submitExam"])->name('submitExam');
+
 
 Route::middleware([
     'auth:sanctum',
