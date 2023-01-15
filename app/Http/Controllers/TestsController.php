@@ -4,13 +4,24 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TestsController extends Controller
 {
     public function getTestQuestions(){
-     $questions = DB::table('tests')->get();
-     return view ('test',['questions'=>$questions]);
+
+        //check if user has already taken the exam
+        $has_taken_exam = DB:: table ('results')-> where ('user_id',Auth::user()->id)->exists();
+        if($has_taken_exam){
+           return \redirect()->route('main')->with('hasTakenExam','You have alrwady given the test');
+        } 
+        else{
+            $questions = DB::table('tests')->get();
+            return view ('test', ['questions'=>$questions]);
+        }
     }
+
+    
     public function submitExam(Request $request){
    //request conatins answer
 
@@ -21,6 +32,8 @@ class TestsController extends Controller
    $points = 0;
    $percentage = 0;
    $totalQuestion = 2;
+
+   
 
 
    foreach($answers as $questionId => $userAnswer){ //loop array
@@ -41,10 +54,10 @@ class TestsController extends Controller
     //calculate score 
     $percentage = ($points/$totalQuestion)*100;
     //dd($percentage);
-
+    $id = Auth:: user ()->id;
     //insert score in the results table 
     DB::table('results')->insert([
-        'user_id'=>1,
+        'user_id'=>$id,
         'score'=>$percentage
 
     ]);

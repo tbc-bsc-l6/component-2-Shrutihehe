@@ -6,3 +6,12 @@
 </div>
 
 @endif
+
+
+@if(session('hasTakenExam'))
+
+<div class="alert alert-danger mt-3 text-center">
+{{session('hasTakenExam')}}
+</div>
+
+@endif
