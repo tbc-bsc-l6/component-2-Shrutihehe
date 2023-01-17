@@ -6,7 +6,8 @@
 
 <div class="container mt-3">
 
-<div id="deadline" class="alert alert-warning"> Deadline is: {{$exam_deadline}}</div>
+<div id="deadline" class="alert alert-warning"> </div>
+
 
   <form action="{{route('submitExam')}}" method="Post">
     {{csrf_field()}}
@@ -43,9 +44,30 @@
 </fieldset>
 @endforeach
 
-<button class="btn btn-primary mt=3" type="submit"> finish exam </button>
+<button id="submitExam" class="btn btn-primary mt=3" type="submit"> finish exam </button>
 
 </form>
 </div>
+
+<script>
+
+var duration = {{$duration}} * 60;
+var time=duration;
+var deadline = document.getElementById('deadline');
+setInterval(function(){
+var counter=time--,min=(counter/60)>>0, sec=(counter-min*60)+'';
+deadline.textContent='Exam closes in '+min+':'+(sec.length>1?'': '0')+sec
+//time!=0|| (time=duration);
+//timer.innerHTML = min;
+
+
+if(counter==0){
+  //submmit the exam automatically
+  document.getElementById('submitExam').click();
+
+}
+},1000);
+  </script>
+
 
 @endsection

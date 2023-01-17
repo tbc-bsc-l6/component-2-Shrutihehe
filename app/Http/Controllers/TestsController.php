@@ -35,10 +35,12 @@ class TestsController extends Controller
             } else {
               $questions = DB::table('tests')->where('subject_id',$subject_id)->get();
               $exam_deadline= DB::table('subjects')->where('id',$subject_id)->value('exam_deadline');
+              $duration = DB::table('subjects')->where('id',$subject_id)->value('duration');
               return view('test', [
                 'questions' => $questions,
                 'subject_id' =>$subject_id,
-                'exam_deadline' =>$exam_deadline
+                'exam_deadline' =>$exam_deadline,
+                'duration'=>$duration
             ]);
               
             }
