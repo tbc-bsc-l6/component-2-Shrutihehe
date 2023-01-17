@@ -40,3 +40,7 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::get('/register_exam/{subject_id}',[TestsController::class,"registerExam"])->name('registerExam');
+
+
+Route::get('/allResults',[TestsController::class,"allResults"])->name('allResults');
+Route::get('/allTests',[TestsController::class,"allTests"])->name('allTests');

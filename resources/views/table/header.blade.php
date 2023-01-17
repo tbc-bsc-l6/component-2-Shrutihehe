@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>Dashboard Template · Bootstrap v5.0</title>
+    <title>Dashboard </title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
 
@@ -74,9 +74,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Users
+                            <a class="nav-link" href="{{route('allResults')}}">
+                                <span data-feather="key"></span>
+                                Results
                             </a>
                         </li>
                         <!--<li class="nav-item">
@@ -86,7 +86,7 @@
             </a>
           </li>-->
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{route('allTests')}}">
                                 <span data-feather="file"></span>
                                 Tests
                             </a>
