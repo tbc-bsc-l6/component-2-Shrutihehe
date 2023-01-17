@@ -13,14 +13,15 @@ class CreateSubjectsTable extends Migration
      */
     public function up()
     {
-        chema::create('subjects', function (Blueprint $table) {
-        $table->id();
-        $table->text('name');
-        $table->boolean('exam_availability');
-        $table->date('exam_start_date');
-        $table->date('exam_deadline');
-        $table->timestamps();
-    });
+        Schema::create('subjects', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->boolean('exam_availability');
+            $table->date('exam_start_date');
+            $table->date('exam_deadline');
+            $table->timestamps();
+        });
+    }
 
     /**
      * Reverse the migrations.
@@ -30,6 +31,5 @@ class CreateSubjectsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('subjects');
-        //
     }
 }

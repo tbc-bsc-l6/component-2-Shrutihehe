@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TestsController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +19,7 @@ Route::get('/', function () {
     return view('index');
 })->name('main');
 
-Route::get('/test', [TestsController::class, "getTestQuestions"])->name('getTestQuestion');
+Route::get('/test/{subject_id}', [TestsController::class, "getTestQuestions"])->name('getTestQuestion')->middleware('auth'); //only allows to take test when login. 
 
 Route::post('/submitExam', [TestsController::class, "submitExam"])->name('submitExam');
 
@@ -31,6 +32,11 @@ Route::middleware([
     Route::get('/dashboard', function () {
         //get data from database
         $data = "this is data";
-        return view('dashboard',['data'=>$data]);
+
+        //get all subjects
+        $subjects = DB::table('subjects')->get();
+
+        return view('dashboard',['data'=>$data,'subjects'=>$subjects]);
     })->name('dashboard');
 });
+Route::get('/register_exam/{subject_id}',[TestsController::class,"registerExam"])->name('registerExam');

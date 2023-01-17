@@ -8,7 +8,7 @@
 
 <form action="{{route('submitExam')}}" method="Post">
   {{csrf_field()}}
-
+  <input type="hidden" class="form-control" name="subject_id" value ="{{$subject_id}}">
 @foreach($questions as $question)
 
 <fieldset class="mt-3" id="{{$question->id}}">
