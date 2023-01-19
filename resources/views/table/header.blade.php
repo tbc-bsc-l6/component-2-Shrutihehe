@@ -54,7 +54,7 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+{{--        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">--}}
         <ul class="navbar-nav px-3">
             <li class="nav-item text-nowrap">
                 <a class="nav-link" href="{{route('profile.show')}}">Profile</a>
@@ -91,6 +91,16 @@
                                 Tests
                             </a>
                         </li>
+
+
+                        @can('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('allTests')}}">
+                                <span data-feather="file"></span>
+                                Admin
+                            </a>
+                        </li>
+                        @endcan
                     </ul>
                 </div>
             </nav>
