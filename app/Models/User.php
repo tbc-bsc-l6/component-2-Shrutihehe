@@ -58,4 +58,16 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    // mutators
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    // accessors
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }
